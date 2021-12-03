@@ -3,3 +3,4 @@ export const getEnvVariable = (envVarName: string) =>
 
 export const keycloakConfig = getEnvVariable('KEYCLOAK_CONFIG');
 
+export const bridgeOrigin = getEnvVariable('BRIDGE_ORIGIN');

@@ -1,12 +1,11 @@
-import React from "react";
-import { Layout } from "antd";
+import React from 'react';
+import { Layout } from 'antd';
 
-import { GraphqlBackend } from "store/providers";
-import ApolloProvider from "store/providers/apollo";
+import { GraphqlBackend } from 'store/providers';
+import ApolloProvider from 'store/providers/apollo';
 
-import PatientsPrescriptions from "./PatientsPrescriptions";
-import "style/themes/clin/dist/antd.css";
-import useQueryString from "utils/useQueryString";
+import PatientsPrescriptions from './PatientsPrescriptions';
+import useQueryString from 'utils/useQueryString';
 
 const { Content } = Layout;
 
@@ -16,10 +15,7 @@ const SearchScreen = (): React.ReactElement => {
   return (
     <Layout>
       <Content>
-        <ApolloProvider
-          backend={GraphqlBackend.ARRANGER}
-          token={token as string}
-        >
+        <ApolloProvider backend={GraphqlBackend.ARRANGER} token={token as string}>
           <PatientsPrescriptions />
         </ApolloProvider>
       </Content>

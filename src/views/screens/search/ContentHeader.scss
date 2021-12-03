@@ -1,0 +1,56 @@
+@import 'style/themes/clin/_colors.scss';
+
+.auto-complete {
+  margin-right: 24px;
+  width: 100%;
+  
+  .ant-input{
+    font-size: 14px;
+    height: 40px;
+    letter-spacing: 0.25px;
+    line-height: 20px;
+  }
+  
+  .ant-input-affix-wrapper{
+    padding: 0 12px;
+    height: 40px;
+  
+    border: none;
+    outline: none;
+    box-shadow:none;
+    &::before{
+      display: none;
+    }
+    &:hover{
+      border-color: transparent;
+    }
+  }
+  
+}
+
+.ant-row.autocomplete-row {
+  border-bottom: 1px solid $gray-5;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -5px;
+  
+  &__name {
+    font-weight: 500;
+  }
+  &__mrn {
+    font-size: 12px;
+  }
+}
+
+.autocomplete-row {
+  &__name {
+    font-weight: 500;
+  }
+  &__mrn {
+    font-size: 12px;
+  }
+}
+
+.buttonCreatePrescription {
+  margin-left: 14px;
+}
