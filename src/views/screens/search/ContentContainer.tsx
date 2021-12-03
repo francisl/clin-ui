@@ -6,6 +6,9 @@ import { IDictionary } from '@ferlab/ui/core/components/QueryBuilder/types';
 import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
 import StackLayout from '@ferlab/ui/core/layout/StackLayout';
 import { TablePaginationConfig, Tabs } from 'antd';
+import { MedicineBoxFilled } from '@ant-design/icons';
+import { ic_people } from 'react-icons-kit/md';
+import IconKit from 'react-icons-kit';
 
 import { GqlResults } from 'store/graphql/models';
 import { ExtendedMapping, ExtendedMappingResults } from 'store/graphql/models';
@@ -70,16 +73,35 @@ const ContentContainer = ({
         loading={prescriptions?.loading}
         total={total}
       />
-      <StackLayout className={styles.tableContainer} vertical>
-        <Tabs onChange={(v) => tabs.setCurrentTab(v as TableTabs)}>
-          <TabPane key={TableTabs.Prescriptions} tab={intl.get('screen.patient.tab.prescriptions')}>
+
+      <Tabs onChange={(v) => tabs.setCurrentTab(v as TableTabs)} type="card">
+        <TabPane
+          key={TableTabs.Prescriptions}
+          tab={
+            <>
+              <IconKit icon={ic_people} />
+              {intl.get('screen.patient.tab.prescriptions')}
+            </>
+          }
+        >
+          <StackLayout className={styles.tableContainer} vertical>
             <PrescriptionsTable pagination={pagination} results={prescriptions} total={total} />
-          </TabPane>
-          <TabPane key={TableTabs.Patients} tab={intl.get('header.navigation.patient')}>
+          </StackLayout>
+        </TabPane>
+        <TabPane
+          key={TableTabs.Patients}
+          tab={
+            <>
+              <MedicineBoxFilled />
+              {intl.get('header.navigation.patient')}
+            </>
+          }
+        >
+          <StackLayout className={styles.tableContainer} vertical>
             <PatientsTable pagination={pagination} results={patients} total={total} />
-          </TabPane>
-        </Tabs>
-      </StackLayout>
+          </StackLayout>
+        </TabPane>
+      </Tabs>
     </StackLayout>
   );
 };
