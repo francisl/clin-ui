@@ -19,7 +19,6 @@ export type PrescriptionResultsContainerProps = {
 };
 
 const autoCompleteResults = (data: PatientResult[]) => {
-  console.log('data : ', data);
   return data.map((result) => ({
     label: (
       <>
