@@ -62,24 +62,12 @@ const ContentContainer = ({
   return (
     <StackLayout className={styles.containerLayout} vertical>
       <ContentHeader searchResults={searchResults} />
-      <QueryBuilder
-        IconTotal={<InfoCircleFilled className={styles.queryBuilderIcon} />}
-        cacheKey="prescription-repo"
-        className="file-repo__query-builder"
-        currentQuery={filters?.content?.length ? filters : {}}
-        dictionary={dictionary}
-        enableCombine={true}
-        history={history}
-        loading={prescriptions?.loading}
-        total={total}
-      />
-
       <Tabs onChange={(v) => tabs.setCurrentTab(v as TableTabs)} type="card">
         <TabPane
           key={TableTabs.Prescriptions}
           tab={
             <>
-              <IconKit icon={ic_people} />
+              <MedicineBoxFilled />
               {intl.get('screen.patient.tab.prescriptions')}
             </>
           }
@@ -92,7 +80,7 @@ const ContentContainer = ({
           key={TableTabs.Patients}
           tab={
             <>
-              <MedicineBoxFilled />
+              <IconKit icon={ic_people} />
               {intl.get('header.navigation.patient')}
             </>
           }
