@@ -32,7 +32,8 @@ const Table = ({ columns, pagination, results, total }: TableProps): React.React
       pagination={{
         ...pagination,
         pageSize: ITEM_PER_PAGE,
-        position: ['bottomLeft'],
+        position: ['bottomRight'],
+        size: 'small',
       }}
     />
   </>
