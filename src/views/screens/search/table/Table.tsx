@@ -12,11 +12,11 @@ import styles from './table.module.scss';
 
 export type Props = {
   results: GqlResults<PrescriptionResult | PatientResult> | null;
-  total: number;
-  pagination: TablePaginationConfig;
 };
 
 type TableProps = Props & {
+  total: number;
+  pagination: TablePaginationConfig;
   columns: TColumn[];
 };
 
@@ -24,7 +24,7 @@ const ITEM_PER_PAGE = 25;
 
 const Table = ({ columns, pagination, results, total }: TableProps): React.ReactElement => (
   <>
-    <ItemsCount page={pagination.current || 1} size={ITEM_PER_PAGE} total={total} />
+    <ItemsCount page={pagination?.current || 1} size={ITEM_PER_PAGE} total={total} />
     <AntTable
       className={styles.table}
       columns={columns}

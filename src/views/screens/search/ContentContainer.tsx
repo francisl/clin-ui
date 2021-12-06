@@ -32,7 +32,6 @@ export type PrescriptionResultsContainerProps = {
   prescriptions: GqlResults<PrescriptionResult>;
   extendedMapping: ExtendedMappingResults;
   filters: ISyntheticSqon;
-  pagination: TablePaginationConfig;
   patients: GqlResults<PatientResult> | null;
   searchResults: GqlResults<PatientResult> | null;
   tabs: {
@@ -44,13 +43,11 @@ export type PrescriptionResultsContainerProps = {
 const ContentContainer = ({
   extendedMapping,
   filters,
-  pagination,
   patients,
   prescriptions,
   searchResults,
   tabs,
 }: PrescriptionResultsContainerProps): React.ReactElement => {
-  const total = prescriptions.total || 0;
   const dictionary: IDictionary = {
     query: {
       facet: (key) =>
@@ -73,7 +70,7 @@ const ContentContainer = ({
           }
         >
           <StackLayout className={styles.tableContainer} vertical>
-            <PrescriptionsTable pagination={pagination} results={prescriptions} total={total} />
+            <PrescriptionsTable results={prescriptions} />
           </StackLayout>
         </TabPane>
         <TabPane
@@ -86,7 +83,7 @@ const ContentContainer = ({
           }
         >
           <StackLayout className={styles.tableContainer} vertical>
-            <PatientsTable pagination={pagination} results={patients} total={total} />
+            <PatientsTable results={patients} />
           </StackLayout>
         </TabPane>
       </Tabs>

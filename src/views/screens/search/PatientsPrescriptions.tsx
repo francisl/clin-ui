@@ -4,7 +4,6 @@ import { getQueryBuilderCache, useFilters } from '@ferlab/ui/core/data/filters/u
 import { resolveSyntheticSqon } from '@ferlab/ui/core/data/sqon/utils';
 import ScrollView from '@ferlab/ui/core/layout/ScrollView';
 import StackLayout, { StackOrientation } from '@ferlab/ui/core/layout/StackLayout';
-import { Typography } from 'antd';
 
 import { mappedFilters, usePatients } from 'store/graphql/patients/actions';
 import { usePrescription, usePrescriptionMapping } from 'store/graphql/prescriptions/actions';
@@ -15,13 +14,11 @@ import Sidebar from './Sidebar';
 import ContentHeader from 'components/Layout/Content/Header';
 import styles from './PatientsPrescriptions.module.scss';
 import { useParams } from 'react-router';
-const { Title } = Typography;
 
 export const MAX_NUMBER_RESULTS = 1000;
 
 const PrescriptionSearch = (): React.ReactElement => {
   useParams();
-  const [currentPage, setCurrentPage] = useState(1);
   const [currentTab, setCurrentTab] = useState(TableTabs.Prescriptions);
   const { filters: sqonFilters } = useFilters();
   const allSqons = getQueryBuilderCache('prescription-repo').state;
@@ -58,10 +55,6 @@ const PrescriptionSearch = (): React.ReactElement => {
           <ContentContainer
             extendedMapping={extendedMapping}
             filters={sqonFilters}
-            pagination={{
-              current: currentPage,
-              onChange: (page, pageSize) => setCurrentPage(page),
-            }}
             patients={patients}
             prescriptions={prescriptions}
             searchResults={searchResults}
