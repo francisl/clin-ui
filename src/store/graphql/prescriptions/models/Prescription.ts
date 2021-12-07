@@ -1,4 +1,9 @@
-import { ArrangerNodeData } from 'store/graphql/models';
+import { ArrangerNodeData, ArrangerResultsTree } from 'store/graphql/models';
+import {
+  HealthProfessional,
+  Organization,
+  PatientResult,
+} from 'store/graphql/patients/models/Patient';
 
 export type DataCategory = {
   data_category: string;
@@ -15,16 +20,25 @@ type HitsResultsDataCategory = {
   };
 };
 export interface PrescriptionResult extends ArrangerNodeData {
-  cid: string;
-  name: string;
-  domain: string[];
-  score: string;
-  code: string;
-  family_count: string;
-  file_count: string;
-  data_category_count?: HitsResultsDataCategory;
-  data_access_authority: string;
-  external_id: string;
+  mrn: string;
+  ethnicity: string;
+  bloodRelationship: string;
+  status: string;
+  timestamp: string;
+  analysis: {
+    code: string;
+    display: string;
+  };
+  submitted: string;
+  authoredOn: string;
+  approver: ArrangerResultsTree<HealthProfessional>;
+  prescriber: ArrangerResultsTree<HealthProfessional>;
+  organization: ArrangerResultsTree<Organization>;
+  familyInfo: {
+    cid: string;
+    type: string;
+  };
+  patientInfo: PatientResult;
 }
 
 export const fields = [

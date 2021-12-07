@@ -7,7 +7,6 @@ import ScrollContent from '@ferlab/ui/core/layout/ScrollContent';
 
 import { Aggregations } from 'store/graphql/models';
 import { ExtendedMappingResults } from 'store/graphql/models';
-import { PrescriptionResult } from 'store/graphql/prescriptions/models/Prescription';
 
 import SidebarFilters from './SidebarFilters';
 
@@ -16,7 +15,6 @@ import { Spin } from 'antd';
 
 export type SidebarData = {
   aggregations: Aggregations;
-  results: PrescriptionResult[];
   extendedMapping: ExtendedMappingResults;
   isLoading?: boolean;
 };
@@ -29,7 +27,6 @@ const PrescriptionSidebar = ({
   aggregations,
   extendedMapping,
   filters,
-  results,
   isLoading = false,
 }: PrescriptionSidebarProps): React.ReactElement => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
@@ -51,7 +48,6 @@ const PrescriptionSidebar = ({
             aggregations={aggregations}
             extendedMapping={extendedMapping}
             filters={filters}
-            results={results}
           />
         </Spin>
       </ScrollContent>

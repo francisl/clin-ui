@@ -1,55 +1,55 @@
-import intl from "react-intl-universal";
-import { ISyntheticSqon } from "@ferlab/ui/core/data/sqon/types";
-import { Button } from "antd";
-import PatientIdCell from "./cell/PatientId";
+import intl from 'react-intl-universal';
+import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
+import { PatientIdCell } from './cell/LinkCell';
 
-import { TColumn } from "./columns";
+import { TColumn } from './columns';
 
-import "./tableColumn.scss";
+import './tableColumn.scss';
 
 export const patientsColumns = (
   sqons: ISyntheticSqon[],
-  onLinkClick?: (sqons: ISyntheticSqon[]) => void
+  onLinkClick?: (sqons: ISyntheticSqon[]) => void,
 ): TColumn[] =>
   [
     {
-      name: "cid",
+      name: 'cid',
       summary: false,
-      title: intl.get("screen.patientsearch.table.id"),
-      render: (cid: string) => <PatientIdCell patientId={cid} />,
+      title: intl.get('screen.patientsearch.table.patient'),
+      render: (cid: string) => <PatientIdCell id={cid} />,
     },
     {
-      name: "ramq",
+      name: 'ramq',
       summary: false,
-      title: intl.get("screen.patientsearch.table.ramq"),
+      title: intl.get('screen.patientsearch.table.ramq'),
     },
     {
-      name: "lastName",
+      name: 'lastName',
       summary: false,
-      title: intl.get("screen.patient.details.edit.lastname"),
+      title: intl.get('screen.patient.details.edit.lastname'),
     },
     {
-      name: "firstName",
+      name: 'firstName',
       summary: true,
-      title: intl.get("screen.patient.details.edit.firstname"),
+      title: intl.get('screen.patient.details.edit.firstname'),
     },
     {
-      name: "gender",
+      name: 'gender',
       summary: true,
-      title: intl.get("screen.patientsearch.table.gender"),
+      title: intl.get('screen.patientsearch.table.gender'),
     },
     {
-      name: "birthDate",
+      name: 'birthDate',
       summary: false,
-      title: intl.get("screen.patientsearch.table.dob"),
+      title: intl.get('screen.patientsearch.table.dob'),
     },
     {
-      name: "timestamp",
+      name: 'timestamp',
       summary: false,
-      title: intl.get("screen.patientsearch.table.dateCreation"),
+      title: intl.get('screen.patientsearch.table.dateCreation'),
+      render: (date: string) => Intl.DateTimeFormat(navigator.language).format(new Date(date)),
     },
   ].map((c) => ({
     ...c,
     dataIndex: c.name,
-    key: Array.isArray(c.name) ? c.name.join(".") : c.name,
+    key: Array.isArray(c.name) ? c.name.join('.') : c.name,
   }));

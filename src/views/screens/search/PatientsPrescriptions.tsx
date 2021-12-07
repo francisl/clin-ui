@@ -50,7 +50,6 @@ const PrescriptionSearch = (): React.ReactElement => {
           aggregations={prescriptions.aggregations}
           extendedMapping={extendedMapping}
           filters={sqonFilters}
-          results={prescriptions.data}
         />
         <ScrollView className={styles.scrollContent}>
           <ContentContainer

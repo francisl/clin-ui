@@ -6,17 +6,18 @@ export interface Requests extends ArrangerNodeData {
   status: string;
   submitted: string;
   test: string;
-};
+}
 
 export interface Organization extends ArrangerNodeData {
   cid: string;
   name: string;
 }
 
-export interface Practitioner extends ArrangerNodeData {
+export interface HealthProfessional extends ArrangerNodeData {
   cid: string;
   firstName: string;
   lastName: string;
+  lastNameFirstName?: string;
 }
 
 export interface PatientResult extends ArrangerNodeData {
@@ -34,7 +35,7 @@ export interface PatientResult extends ArrangerNodeData {
   position: string;
   ramq: string;
   timestamp: string;
-  organization: ArrangerResultsTree<Organization>
-  requests: ArrangerResultsTree<Requests>
-  practitioner: ArrangerResultsTree<Practitioner>
-};
+  organization: ArrangerResultsTree<Organization>;
+  requests: ArrangerResultsTree<Requests>;
+  practitioner: ArrangerResultsTree<HealthProfessional>;
+}
