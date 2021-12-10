@@ -488,6 +488,7 @@ const en = {
   'screen.patientsearch.status.incomplete': 'Incomplete',
   'screen.patientsearch.status.on-hold': 'On hold',
   'screen.patientsearch.status.revoked': 'Revoked',
+  'screen.patientsearch.status.submitted': 'Submit',
   'screen.patientsearch.table.all': 'All',
   'screen.patientsearch.table.bloodRelationship': 'Blood Relationship',
   'screen.patientsearch.table.date': 'Date',

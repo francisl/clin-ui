@@ -10,20 +10,12 @@ export type DataCategory = {
   count: number;
 };
 
-type HitsResultsDataCategory = {
-  hits: {
-    edges: [
-      {
-        node: DataCategory;
-      },
-    ];
-  };
-};
 export interface PrescriptionResult extends ArrangerNodeData {
   mrn: string;
   ethnicity: string;
   bloodRelationship: string;
   status: string;
+  state: string;
   timestamp: string;
   analysis: {
     code: string;
@@ -42,7 +34,7 @@ export interface PrescriptionResult extends ArrangerNodeData {
 }
 
 export const fields = [
-  'status',
+  'state',
   'analysis__code',
   'prescriber__lastNameFirstName',
   'approver__lastNameFirstName',

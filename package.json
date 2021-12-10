@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.4.17",
-    "@ferlab/style": "^1.9.94",
-    "@ferlab/ui": "^2.2.6",
+    "@ferlab/style": "^1.10.0",
+    "@ferlab/ui": "^2.3.0",
     "@react-keycloak/web": "^3.4.0",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.15.0",

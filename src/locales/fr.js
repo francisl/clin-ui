@@ -393,7 +393,7 @@ const fr = {
   'screen.patient.details.edit.files.number': 'Numéro de dossier',
   'screen.patient.details.edit.files.save': 'Sauvegarder',
   'screen.patient.details.edit.firstname': 'Prénom',
-  'screen.patient.details.edit.lastname': 'Nom de famille',
+  'screen.patient.details.edit.lastname': 'Nom',
   'screen.patient.details.edit.noRamq': 'Aucun numéro RAMQ disponible',
   'screen.patient.details.edit.processing': 'Sauvegarde en cours',
   'screen.patient.details.edit.ramq': 'RAMQ',

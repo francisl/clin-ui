@@ -14,6 +14,7 @@ export const PRESCRIPTIONS_QUERY = gql`
             ethnicity
             bloodRelationship
             status
+            state
             timestamp
             analysis{
               code

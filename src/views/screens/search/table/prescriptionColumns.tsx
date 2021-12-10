@@ -2,6 +2,7 @@ import React from 'react';
 import intl from 'react-intl-universal';
 import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
 import { Badge } from 'antd';
+import Status, { StatusOptions } from '@ferlab/ui/core/components/labels/Status';
 
 import { TColumn } from './columns';
 import { PatientIdCell, PrescriptionIdCell } from './cell/LinkCell';
@@ -41,8 +42,17 @@ const statusColors: Record<string, Record<string, string>> = {
 export const prescriptionsColumns = (
   sqons: ISyntheticSqon[],
   onLinkClick?: (sqons: ISyntheticSqon[]) => void,
-): TColumn[] =>
-  [
+): TColumn[] => {
+  const statusTranslation = {
+    [StatusOptions.Active]: intl.get('screen.patientsearch.status.active'),
+    [StatusOptions.Completed]: intl.get('screen.patientsearch.status.completed'),
+    [StatusOptions.Draft]: intl.get('screen.patientsearch.status.draft'),
+    [StatusOptions.Revoked]: intl.get('screen.patientsearch.status.revoked'),
+    [StatusOptions.Submitted]: intl.get('screen.patientsearch.status.submitted'),
+    [StatusOptions.Incomplete]: intl.get('screen.patientsearch.status.incomplete'),
+  };
+
+  return [
     {
       name: ['cid'],
       render: (cid: string, prescription: any) => {
@@ -59,14 +69,8 @@ export const prescriptionsColumns = (
       title: intl.get('screen.patientsearch.table.patientId'),
     },
     {
-      name: 'status',
-      render: (value: string) => (
-        <Badge
-          className="badge"
-          color={statusColors[value]?.color}
-          text={intl.get(statusColors[value].key)}
-        />
-      ),
+      name: 'state',
+      render: (value: string) => <Status dictionary={statusTranslation} status={value} />,
       summary: false,
       title: intl.get('screen.patientsearch.table.status'),
     },
@@ -97,3 +101,4 @@ export const prescriptionsColumns = (
     dataIndex: c.name,
     key: Array.isArray(c.name) ? c.name.join('.') : c.name,
   }));
+};
