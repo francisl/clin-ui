@@ -45,6 +45,11 @@ const en = {
   'components.table.action.search': 'Search',
   'components.variantNavigation.moreResults': 'Refine your search to see other results',
   'components.variantNavigation.searchInput.resultsCount': '{count} results',
+  'filters.group.state': 'Status',
+  'filters.group.analysis.code': 'Analysis',
+  'filters.group.prescriber.lastNameFirstName': 'Prescriber / Responsable',
+  'filters.group.approver.lastNameFirstName': 'Approver',
+  'filters.group.organization.name': 'Organisation',
   'filters.__missing__': 'Missing',
   'filters.false': 'False',
   'filters.header.practitioner.lastNameFirstName': 'Approver',
@@ -981,7 +986,7 @@ const en = {
   'component.table.itemcount.results.multiple.pages':
     'Results <strong>{from}</strong> - <strong>{to}</strong> of <strong>{total}</strong>',
   'component.table.itemcount.of': 'of',
-  'report.nanuq.success': 'Your file has been downloaded'
+  'report.nanuq.success': 'Your file has been downloaded',
 };
 
 export default en;

@@ -67,7 +67,8 @@ const ContentContainer = ({
           tab={
             <>
               <MedicineBoxFilled />
-              {intl.get('screen.patient.tab.prescriptions')}
+              {intl.get('screen.patient.tab.prescriptions')}{' '}
+              {prescriptions?.total && ` (${prescriptions?.total})`}
             </>
           }
         >
@@ -80,7 +81,7 @@ const ContentContainer = ({
           tab={
             <>
               <IconKit icon={ic_people} />
-              {intl.get('header.navigation.patient')}
+              {intl.get('header.navigation.patient')} {patients?.total && ` (${patients?.total})`}
             </>
           }
         >

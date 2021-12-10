@@ -56,7 +56,6 @@ export const prescriptionsColumns = (
     {
       name: ['cid'],
       render: (cid: string, prescription: any) => {
-        debugger;
         return <PrescriptionIdCell patientId={prescription.patientInfo?.cid || ''} text={cid} />;
       },
       summary: false,

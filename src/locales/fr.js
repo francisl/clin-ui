@@ -64,6 +64,11 @@ const fr = {
   'components.variantNavigation.searchInput.moreResults':
     "Préciser votre recherche pour voir d'autres résultats",
   'components.variantNavigation.searchInput.resultsCount': '{count} résultats',
+  'filters.group.state': 'Statut',
+  'filters.group.analysis.code': 'Analyse',
+  'filters.group.prescriber.lastNameFirstName': 'Préscripteur / Résponsable',
+  'filters.group.approver.lastNameFirstName': 'Médecin approbateur',
+  'filters.group.organization.name': 'Établissement prescripteur',
   'filters.__missing__': 'Manquant',
   'filters.false': 'Faux',
   'filters.header.practitioner.lastNameFirstName': 'Médecin approbateur',

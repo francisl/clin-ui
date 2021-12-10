@@ -125,10 +125,14 @@ export const getFilterGroup = (
       },
     };
   }
+  console.log('filter group name : ', extendedMapping?.field, ' >>> ', extendedMapping);
 
   return {
     field: extendedMapping?.field || '',
-    title: extendedMapping?.displayName || '',
+    title:
+      intl.get(`filters.group.${extendedMapping?.field}` || '') ||
+      extendedMapping?.displayName ||
+      '',
     type: getFilterType(extendedMapping?.type || ''),
     config: {
       nameMapping: [],
