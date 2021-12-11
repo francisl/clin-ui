@@ -1,8 +1,10 @@
 import intl from 'react-intl-universal';
+import { Tooltip } from 'antd';
 import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
 import { PatientIdCell } from './cell/LinkCell';
 
 import { TColumn } from './columns';
+import { formatDate } from 'utils/date';
 
 import './tableColumn.scss';
 
@@ -40,14 +42,22 @@ export const patientsColumns = (
     {
       name: 'birthDate',
       summary: false,
-      title: intl.get('screen.patientsearch.table.dob'),
-      render: (date: string) => Intl.DateTimeFormat(navigator.language).format(new Date(date)),
+      title: (
+        <Tooltip placement="topLeft" title={intl.get('standard.format.date')} arrowPointAtCenter>
+          {intl.get('screen.patientsearch.table.dob')}
+        </Tooltip>
+      ),
+      render: (date: string) => formatDate(date),
     },
     {
       name: 'timestamp',
       summary: false,
-      title: intl.get('screen.patientsearch.table.dateCreation'),
-      render: (date: string) => Intl.DateTimeFormat(navigator.language).format(new Date(date)),
+      title: (
+        <Tooltip placement="topLeft" title={intl.get('standard.format.date')} arrowPointAtCenter>
+          {intl.get('screen.patientsearch.table.dateCreation')}
+        </Tooltip>
+      ),
+      render: (date: string) => formatDate(date),
     },
   ].map((c) => ({
     ...c,

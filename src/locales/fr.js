@@ -1117,6 +1117,7 @@ const fr = {
   'screen.patientvariant.filter.collapse.all': 'Tout fermer',
   'screen.patientvariant.filter.expand.all': 'Tout ouvrir',
   'screen.patientvariant.results.table.rqdm': 'RQDM',
+  'standard.format.date': 'Format AAAA-MM-JJ',
   'querybuilder.query.combine.and': 'Et',
   'querybuilder.query.combine.or': 'Ou',
   'querybuilder.query.noQuery': 'Utiliser les filtres pour créer une requête',

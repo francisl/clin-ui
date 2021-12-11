@@ -1,43 +1,15 @@
 import React from 'react';
 import intl from 'react-intl-universal';
+import { Tooltip } from 'antd';
 import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
-import { Badge } from 'antd';
 import Status, { StatusOptions } from '@ferlab/ui/core/components/labels/Status';
 
 import { TColumn } from './columns';
 import { PatientIdCell, PrescriptionIdCell } from './cell/LinkCell';
 
+import { formatDate } from 'utils/date';
+
 import './tableColumn.scss';
-
-const statusColors: Record<string, Record<string, string>> = {
-  active: {
-    color: '#1D8BC6',
-    key: 'filters.options.active',
-  },
-  completed: {
-    color: '#389E0D',
-    key: 'filters.options.completed',
-  },
-  draft: {
-    color: '#D2DBE4',
-    key: 'filters.options.draft',
-  },
-
-  incomplete: {
-    color: '#EB2F96',
-    key: 'filters.options.incomplete',
-  },
-
-  'on-hold': {
-    color: '#D46B08',
-    key: 'filters.options.on-hold',
-  },
-
-  revoked: {
-    color: '#CF1322',
-    key: 'filters.options.revoked',
-  },
-};
 
 export const prescriptionsColumns = (
   sqons: ISyntheticSqon[],
@@ -75,9 +47,13 @@ export const prescriptionsColumns = (
     },
     {
       name: 'timestamp',
-      render: (date: string) => Intl.DateTimeFormat(navigator.language).format(new Date(date)),
+      render: (date: string) => formatDate(date),
       summary: false,
-      title: intl.get('screen.patientsearch.table.date'),
+      title: (
+        <Tooltip placement="topLeft" title={intl.get('standard.format.date')} arrowPointAtCenter>
+          {intl.get('screen.patientsearch.table.date')}
+        </Tooltip>
+      ),
     },
     {
       name: ['analysis', 'code'],
