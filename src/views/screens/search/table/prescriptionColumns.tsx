@@ -12,30 +12,30 @@ import './tableColumn.scss';
 const statusColors: Record<string, Record<string, string>> = {
   active: {
     color: '#1D8BC6',
-    key: 'screen.patientsearch.status.active',
+    key: 'filters.options.active',
   },
   completed: {
     color: '#389E0D',
-    key: 'screen.patientsearch.status.completed',
+    key: 'filters.options.completed',
   },
   draft: {
     color: '#D2DBE4',
-    key: 'screen.patientsearch.status.draft',
+    key: 'filters.options.draft',
   },
 
   incomplete: {
     color: '#EB2F96',
-    key: 'screen.patientsearch.status.incomplete',
+    key: 'filters.options.incomplete',
   },
 
   'on-hold': {
     color: '#D46B08',
-    key: 'screen.patientsearch.status.on-hold',
+    key: 'filters.options.on-hold',
   },
 
   revoked: {
     color: '#CF1322',
-    key: 'screen.patientsearch.status.revoked',
+    key: 'filters.options.revoked',
   },
 };
 
@@ -44,12 +44,12 @@ export const prescriptionsColumns = (
   onLinkClick?: (sqons: ISyntheticSqon[]) => void,
 ): TColumn[] => {
   const statusTranslation = {
-    [StatusOptions.Active]: intl.get('screen.patientsearch.status.active'),
-    [StatusOptions.Completed]: intl.get('screen.patientsearch.status.completed'),
-    [StatusOptions.Draft]: intl.get('screen.patientsearch.status.draft'),
-    [StatusOptions.Revoked]: intl.get('screen.patientsearch.status.revoked'),
-    [StatusOptions.Submitted]: intl.get('screen.patientsearch.status.submitted'),
-    [StatusOptions.Incomplete]: intl.get('screen.patientsearch.status.incomplete'),
+    [StatusOptions.Active]: intl.get('filters.options.active'),
+    [StatusOptions.Completed]: intl.get('filters.options.completed'),
+    [StatusOptions.Draft]: intl.get('filters.options.draft'),
+    [StatusOptions.Revoked]: intl.get('filters.options.revoked'),
+    [StatusOptions.Submitted]: intl.get('filters.options.submitted'),
+    [StatusOptions.Incomplete]: intl.get('filters.options.incomplete'),
   };
 
   return [

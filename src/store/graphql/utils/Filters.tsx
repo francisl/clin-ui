@@ -77,11 +77,14 @@ export const generateFilters = (
     );
   });
 
+const translateWhenNeeded = (group: string, key: string) =>
+  group === 'state' ? intl.get(`filters.options.${keyEnhance(key)}`) : `${keyEnhance(key)}`;
+
 export const getFilters = (aggregations: Aggregations | null, key: string): IFilter[] => {
   if (!aggregations || !key) return [];
   if (isTermAgg(aggregations[key])) {
     return aggregations[key!].buckets.map((f: any) => {
-      const translatedKey = intl.get(`filters.${keyEnhance(f.key)}`);
+      const translatedKey = translateWhenNeeded(key, f.key);
       const name = translatedKey ? translatedKey : f.key;
       return {
         data: {
@@ -97,7 +100,7 @@ export const getFilters = (aggregations: Aggregations | null, key: string): IFil
       {
         data: { max: 1, min: 0 },
         id: key,
-        name: intl.get(`filters.${keyEnhance(key)}`),
+        name: translateWhenNeeded(key, key),
       },
     ];
   }
@@ -125,7 +128,6 @@ export const getFilterGroup = (
       },
     };
   }
-  console.log('filter group name : ', extendedMapping?.field, ' >>> ', extendedMapping);
 
   return {
     field: extendedMapping?.field || '',
