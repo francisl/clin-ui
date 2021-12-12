@@ -1,11 +1,9 @@
 import React from 'react';
 import intl from 'react-intl-universal';
-import { InfoCircleFilled } from '@ant-design/icons';
-import QueryBuilder from '@ferlab/ui/core/components/QueryBuilder';
 import { IDictionary } from '@ferlab/ui/core/components/QueryBuilder/types';
 import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
 import StackLayout from '@ferlab/ui/core/layout/StackLayout';
-import { TablePaginationConfig, Tabs } from 'antd';
+import { Tabs } from 'antd';
 import { MedicineBoxFilled } from '@ant-design/icons';
 import { ic_people } from 'react-icons-kit/md';
 import IconKit from 'react-icons-kit';
@@ -18,7 +16,6 @@ import { PrescriptionResult } from 'store/graphql/prescriptions/models/Prescript
 import PatientsTable from './table/PatientsTable';
 import PrescriptionsTable from './table/PrescriptionsTable';
 import ContentHeader from './ContentHeader';
-import history from 'utils/history';
 
 import styles from './ContentContainer.module.scss';
 

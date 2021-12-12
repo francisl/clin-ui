@@ -83,18 +83,20 @@ const translateWhenNeeded = (group: string, key: string) =>
 export const getFilters = (aggregations: Aggregations | null, key: string): IFilter[] => {
   if (!aggregations || !key) return [];
   if (isTermAgg(aggregations[key])) {
-    return aggregations[key!].buckets.map((f: any) => {
-      const translatedKey = translateWhenNeeded(key, f.key);
-      const name = translatedKey ? translatedKey : f.key;
-      return {
-        data: {
-          count: f.doc_count,
-          key: keyEnhanceBooleanOnly(f.key),
-        },
-        id: f.key,
-        name: name,
-      };
-    });
+    return aggregations[key!].buckets
+      .map((f: any) => {
+        const translatedKey = translateWhenNeeded(key, f.key);
+        const name = translatedKey ? translatedKey : f.key;
+        return {
+          data: {
+            count: f.doc_count,
+            key: keyEnhanceBooleanOnly(f.key),
+          },
+          id: f.key,
+          name: name,
+        };
+      })
+      .filter((f: any) => !(f.name === ''));
   } else if (aggregations[key]?.stats) {
     return [
       {
