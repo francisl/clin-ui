@@ -678,7 +678,7 @@ const fr = {
   'filters.options.completed': 'Complétée',
   'filters.options.draft': 'Brouillon',
   'filters.options.incomplete': 'Incomplète',
-  'filters.options.on-hold': 'Soumise',
+  'filters.options.submitted': 'Soumise',
   'filters.options.revoked': 'Refusée',
   'screen.patientsearch.table.bloodRelationship': 'Consanguinité',
   'screen.patientsearch.table.date': 'Date',
