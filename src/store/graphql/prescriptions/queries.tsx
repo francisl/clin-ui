@@ -3,9 +3,9 @@ import { gql } from '@apollo/client';
 import { fields } from './models/Prescription';
 
 export const PRESCRIPTIONS_QUERY = gql`
-  query PrescriptionsInformation ($sqon: JSON, $first: Int, $offset: Int) {
+  query PrescriptionsInformation ($sqon: JSON, $first: Int, $offset: Int, $sort: [Sort]) {
     Prescriptions {
-      hits(filters: $sqon, first: $first, offset: $offset) {
+      hits(filters: $sqon, first: $first, offset: $offset, sort: $sort) {
         edges {
           node {
             id

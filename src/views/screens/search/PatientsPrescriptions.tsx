@@ -28,6 +28,12 @@ const PrescriptionSearch = (): React.ReactElement => {
     first: MAX_NUMBER_RESULTS,
     offset: 0,
     sqon: resolveSyntheticSqon(allSqons, newFilters),
+    sort: [
+      {
+        field: 'timestamp',
+        order: 'desc',
+      },
+    ],
   };
 
   const searchResults = usePatients(patientQueryConfig);
@@ -37,7 +43,14 @@ const PrescriptionSearch = (): React.ReactElement => {
     first: MAX_NUMBER_RESULTS,
     offset: 0,
     sqon: resolveSyntheticSqon(allSqons, sqonFilters),
+    sort: [
+      {
+        field: 'timestamp',
+        order: 'desc',
+      },
+    ],
   };
+
   const prescriptions = usePrescription(arrangerQueryConfig);
   const extendedMapping = usePrescriptionMapping();
 
@@ -55,7 +68,6 @@ const PrescriptionSearch = (): React.ReactElement => {
           <ContentContainer
             isLoading={prescriptions.loading}
             extendedMapping={extendedMapping}
-            filters={sqonFilters}
             patients={patients}
             prescriptions={prescriptions}
             searchResults={searchResults}

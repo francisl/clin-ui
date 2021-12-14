@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
 export const PATIENTS_QUERY = gql`
-  query PatientsInformation($sqon: JSON, $first: Int, $offset: Int) {
+  query PatientsInformation($sqon: JSON, $first: Int, $offset: Int, $sort: [Sort]) {
     Patients {
-      hits(filters: $sqon, first: $first, offset: $offset) {
+      hits(filters: $sqon, first: $first, offset: $offset, sort: $sort) {
         edges {
           node {
             id
