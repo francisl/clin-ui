@@ -1,4 +1,4 @@
-type RenderValue = (v: string) => JSX.Element | string;
+type RenderValue = (v: string) => JSX.Element | string | null;
 type RenderRecord = (r: Record<string, string>) => JSX.Element | string;
 type RenderComplexRecord = (v: string, r: any) => JSX.Element | string;
 

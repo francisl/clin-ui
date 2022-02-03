@@ -38,7 +38,7 @@ export const prescriptionsColumns = (
     },
     {
       name: 'state',
-      render: (value: string) => <Status dictionary={statusTranslation} status={value} />,
+      render: (value: string) => !!value ? <Status dictionary={statusTranslation} status={value} /> : null,
       summary: false,
       title: intl.get('screen.patientsearch.table.status'),
     },
