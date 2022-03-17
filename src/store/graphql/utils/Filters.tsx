@@ -16,7 +16,6 @@ import {
   keyEnhance,
   underscoreToDot,
 } from '@ferlab/ui/core/data/arranger/formatting';
-import { VariantEntity } from 'store/graphql/variants/models';
 
 export interface RangeAggs {
   stats: {
@@ -34,7 +33,6 @@ export interface TermAgg {
 }
 
 export type Aggs = TermAggs | RangeAggs;
-export type HitsEntity = VariantEntity;
 
 const isTermAgg = (obj: TermAggs) => !!obj.buckets;
 const isRangeAgg = (obj: RangeAggs) => !!obj.stats;

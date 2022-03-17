@@ -71,6 +71,7 @@ export type VariantEntity = {
   variant_type: string;
   frequency_RQDM: frequency_RQDMEntity;
   consequences?: ArrangerResultsTree<ConsequenceEntity>;
+  varsome?: Varsome;
   genes?: ArrangerResultsTree<GeneEntity>;
   donors?: ArrangerResultsTree<DonorsEntity>;
   external_frequencies?: ExternalFrequenciesEntity;
@@ -85,6 +86,28 @@ export type VariantEntity = {
   rsnumbermber: string;
   last_annotation_update: number;
 };
+
+export type VarsomeClassifications = {
+    met_criteria: boolean;
+    name: string;
+    id: string;
+}
+type VarsomeVerdict = {
+  benign_subscore: string;
+  clinical_score: number;
+  pathogenic_subscore: string;
+  verdict: string;
+}
+
+type VarsomeAcmg = {
+  verdict: VarsomeVerdict;
+  classifications: ArrangerResultsTree<VarsomeClassifications>;
+}
+
+export type Varsome = {
+  acmg: VarsomeAcmg;
+  variant_id: string;
+}
 
 export type GeneEntity = {
   id: string;

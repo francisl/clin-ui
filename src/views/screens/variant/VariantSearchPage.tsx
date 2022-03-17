@@ -85,6 +85,8 @@ const filterGroups: {
           'consequences__predictions__dann_score',
           'consequences__predictions__lrt_pred',
           'consequences__predictions__revel_rankscore',
+          'varsome__acmg__verdict__verdict',
+          'varsome__acmg__classifications__name',
         ],
       },
     ],
