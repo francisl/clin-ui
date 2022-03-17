@@ -23,6 +23,7 @@ import style from './VariantTableContainer.module.scss';
 import OccurenceDrawer from './OccurenceDrawer';
 import { ColumnType } from 'antd/lib/table';
 import { ItemsCount } from 'components/table/ItemsCount';
+import { Varsome, VarsomeClassifications } from 'store/graphql/variants/models';
 
 const DEFAULT_PAGE_NUM = 1;
 const DEFAULT_PAGE_SIZE = 10;
@@ -119,6 +120,30 @@ const VariantTableContainer = (props: OwnProps) => {
         ),
     },
     {
+      title: () => intl.get('screen.patientvariant.results.table.varsome'),
+      dataIndex: 'varsome',
+      className: cx(style.variantTableCell, style.variantTableCellElipsis),
+      render: (varsome: Varsome) =>
+        (<a
+          href={`https://varsome.com/variant/${varsome?.variant_id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          { varsome?.acmg.verdict.verdict ?
+            varsome?.acmg.verdict.verdict :
+            'No Verdict'
+          }
+        </a>)
+    },
+    {
+      title: () => intl.get('screen.patientvariant.results.table.acmgRules'),
+      dataIndex: 'varsome',
+      className: cx(style.variantTableCell, style.variantTableCellElipsis),
+      render: (varsome: Varsome) =>
+        varsome?.acmg.classifications.hits.edges.map((e: ArrangerEdge<VarsomeClassifications>) => e.node.name)
+        .reduce((prev, curr) => `${prev}, ${curr}`)
+    },
+    {
       title: () => intl.get('screen.variantsearch.table.gnomAd'),
       dataIndex: 'external_frequencies',
       render: (external_frequencies: ExternalFrequenciesEntity) =>
@@ -148,7 +173,7 @@ const VariantTableContainer = (props: OwnProps) => {
         const donor = findDonorById(record, props.patientId);
         const motherCalls = formatCalls(donor?.node.mother_calls!);
         const fatherCalls = formatCalls(donor?.node.father_calls!);
-        
+
         return `${motherCalls} : ${fatherCalls}`;
       },
     },

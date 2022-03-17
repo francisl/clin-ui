@@ -41,6 +41,28 @@ export const VARIANT_QUERY = gql`
               }
             }
 
+            varsome {
+              acmg {
+                verdict {
+                  benign_subscore
+                  clinical_score
+                  pathogenic_subscore
+                  verdict
+                }
+                classifications {
+                  hits {
+                    edges {
+                      node {
+                        met_criteria
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+              variant_id
+            }
+
             donors {
               hits {
                 total
