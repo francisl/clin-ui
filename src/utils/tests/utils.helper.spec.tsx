@@ -9,7 +9,6 @@ import {
     downloadJSONFile,
     getPatientPosition,
     formatLocus} from '../helper';
-import * as mock from './mockData';
 
 describe('Utils: Helper', () => {
     describe(`Function: ${toExponentialNotation.name}`, () => {

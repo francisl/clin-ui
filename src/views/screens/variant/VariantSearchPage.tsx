@@ -1,6 +1,6 @@
 import React from 'react';
 import intl from 'react-intl-universal';
-import SidebarMenu, { ISidebarMenuItem } from '@ferlab/ui/core/components/sidebarMenu';
+import SidebarMenu, { ISidebarMenuItem } from '@ferlab/ui/core/components/SidebarMenu';
 import { FilterInfo, SUGGESTION_TYPE } from 'views/screens/variant/filters/types';
 import { Layout } from 'antd';
 import FilterList from 'views/screens/variant/filters/FilterList';

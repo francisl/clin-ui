@@ -2,7 +2,7 @@
 
 exports[`Footer should be as the snapshot 1`] = `
 <footer
-  className="ant-layout-footer footer"
+  className="ant-layout-footer"
   id="footer"
 >
   <div

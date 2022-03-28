@@ -58,7 +58,7 @@ const ContentHeader = ({
             setFilteredResults([]);
             return;
           }
-          const searchValues = value.split(' ').map((value) => value.toLowerCase());
+          const searchValues = value.split(' ').map((value: string) => value.toLowerCase());
           const results = searchResults?.data!.filter((patient) => {
             const infoToSearch = [
               patient.cid,
@@ -72,11 +72,11 @@ const ContentHeader = ({
               .join(',')
               .toLowerCase();
 
-            return searchValues.some((searchValue) => infoToSearch.includes(searchValue));
+            return searchValues.some((searchValue: string) => infoToSearch.includes(searchValue));
           });
           setFilteredResults(results!);
         }}
-        onSelect={(id) => {
+        onSelect={(id: string) => {
           redirectParent(`/patient/${id}`);
         }}
         options={autoCompleteResults(filteredResults)}

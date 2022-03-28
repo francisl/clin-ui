@@ -15,11 +15,26 @@ type SuggesterProps = {
   title: string;
 };
 
+type OptionMeta = {
+  meta: {
+    featureType: string,
+    displayName: string,
+    searchText: string
+  }
+}
+
+type OptionValue = {
+  value: string
+}
+
+type Option = OptionValue & OptionMeta
+
+
 const MIN_N_OF_CHARS_BEFORE_SEARCH = 2;
 const MAX_N_OF_CHARS = 50;
 
 const Suggester = ({ suggestionType, placeholderText }: SuggesterProps) => {
-  const [options, setOptions] = useState<{ value: string }[]>([]);
+  const [options, setOptions] = useState<OptionValue[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const axiosInstance = useAxiosBasicWithAuth();
@@ -85,14 +100,14 @@ const Suggester = ({ suggestionType, placeholderText }: SuggesterProps) => {
       className={style.suggesterInput}
       style={{ width: style.autoCompleteWidth }}
       onSearch={(searchText) => handleSearch(searchText, suggestionType)}
-      options={options}
+      options={options as Option[]}
       notFoundContent={loading ? <Spin /> : intl.get('filter.suggester.search.noresults')}
       filterOption={(inputValue, option) =>
         //  make sure we show suggestions for corresponding search only.
         (inputValue || '').trim() === option?.meta?.searchText
       }
-      onSelect={(value, option) => {
-        onSelectSuggestion(option.meta.featureType, option.meta.displayName);
+      onSelect={(value: string, option: Option) => {
+        onSelectSuggestion(option?.meta?.featureType, option.meta?.displayName);
       }}
       disabled={error}
     >
@@ -105,7 +120,7 @@ const Suggester = ({ suggestionType, placeholderText }: SuggesterProps) => {
           e.preventDefault();
           const value = e.target.value;
           if (!value || !value.trim()) {
-            const opt: { value: string }[] = [];
+            const opt: OptionValue[] = [];
             setOptions(opt);
           }
         }}

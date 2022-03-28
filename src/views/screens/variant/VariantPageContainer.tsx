@@ -141,7 +141,7 @@ const VariantPageContainer = ({ mappingResults }: VariantPageContainerData) => {
           enable: true,
           onFacetClick: (field) => {
             setSelectedFilterContent(
-              <GenericFilters field={dotToUnderscore(field)} mappingResults={mappingResults} />,
+              <GenericFilters field={dotToUnderscore(field.content.field)} mappingResults={mappingResults} />,
             );
           },
           selectedFilterContent: selectedFilterContent,

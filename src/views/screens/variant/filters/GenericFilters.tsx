@@ -18,7 +18,7 @@ type OwnProps = {
   mappingResults: MappingResults;
 };
 
-const GenericFilters: FunctionComponent<OwnProps> = ({ field, mappingResults }) => {
+const GenericFilters = ({ field, mappingResults }: OwnProps): React.ReactElement => {
   const { filters } = useFilters();
   const { patientid } = useParams<{ patientid: string }>();
   const allSqons = getQueryBuilderCache(VARIANT_REPO_CACHE_KEY).state;
