@@ -30,7 +30,7 @@ const mockVariantPageContainerComponents = jest.mock('views/screens/variant/Vari
 jest.mock('store/graphql/variants/actions');
 const useMock = actions.useGetVariantExtendedMappings
 
-const VariantSearchPageTests = () => {
+const variantSearchPageTests = () => {
   beforeEach(() => {
     useMock.mockReturnValue({ loadingMapping: false })
   });
@@ -46,7 +46,8 @@ describe('Variant', () => {
   describe('views', () => {
     describe('screens', () => {
       describe('variant', () => {
-          describe('VariantSearchPage', VariantSearchPageTests)
+          // eslint-disable-next-line jest/valid-describe-callback
+          describe('VariantSearchPage', variantSearchPageTests)
       })
     })
   })

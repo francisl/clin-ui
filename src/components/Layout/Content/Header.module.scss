@@ -1,5 +1,5 @@
-@import "_colors";
-@import "_layout";
+@import 'src/style/themes/clin/colors';
+@import 'src/style/themes/clin/layout';
 
 .contentHeader {
   background-color: $gray-1 !important;

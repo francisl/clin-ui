@@ -1,4 +1,4 @@
-@import "colors";
+@import 'src/style/themes/clin/colors';
 
 .variantEntity {
   .entityHeader {
@@ -10,7 +10,7 @@
 
     .titleSkeleton {
       *[class$="-title"] {
-        margin: 0; 
+        margin: 0;
         height: 24px;
       }
     }

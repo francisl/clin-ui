@@ -1,4 +1,4 @@
-@import 'style/themes/clin/_colors.scss';
+@import 'src/style/themes/clin/colors';
 
 .auto-complete {
   width: 100%;
@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: -5px;
-  
+
   &__name {
     font-weight: 500;
   }
