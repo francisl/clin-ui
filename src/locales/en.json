@@ -235,6 +235,8 @@
   "screen.variantDetails.summaryTab.consequencesTable.ConsequenceColumn": "Consequence(s)",
   "screen.variantDetails.summaryTab.consequencesTable.ConservationColumn": "Conservation (PhyloP17Way) ",
   "screen.variantDetails.summaryTab.consequencesTable.VEP": "VEP",
+  "screen.variantDetails.summaryTab.acmgCriteria.criteriaColumn": "Criteria",
+  "screen.variantDetails.summaryTab.acmgCriteria.explanationColumn": "Explanation",
   "screen.variantDetails.summaryTab.patientTable.frequencies": "Frequencies",
   "screen.variantDetails.summaryTab.summaryTable.alleleAlt": "Allele Alt.:",
   "screen.variantDetails.summaryTab.summaryTable.alleleRef": "Allele Ref.:",

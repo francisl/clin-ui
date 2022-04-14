@@ -9,7 +9,7 @@ import TeamIcon from 'components/icons/TeamIcon';
 import ServerError from 'components/Results/ServerError';
 import NotFound from 'components/Results/NotFound';
 
-import ResumePanel from './ResumePanel';
+import ResumePanel from './SummaryPanel';
 import { GraphqlBackend } from 'providers/';
 import ApolloProvider from 'providers//apollo';
 import { useTabSummaryData } from 'graphql/variants/tabActions';

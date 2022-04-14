@@ -347,6 +347,39 @@ export const TAB_SUMMARY_QUERY = gql`
                 }
               }
             }
+            varsome {
+              acmg {
+                coding_impact
+                gene_symbol
+                transcript
+                transcript_reason
+
+                verdict {
+                  benign_subscore
+                  clinical_score
+                  pathogenic_subscore
+                  verdict
+                }
+                classifications {
+                  hits {
+                    edges {
+                      node {
+                        met_criteria
+                        name
+                        user_explain
+                      }
+                    }
+                  }
+                }
+              }
+              has_publication
+              publications {
+                hits {
+                  edges { node { id }}
+                }
+              }
+              variant_id
+            }
           }
         }
       }

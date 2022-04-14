@@ -16,7 +16,6 @@ import {
   VariantEntity,
 } from 'graphql/variants/models';
 import { getVepImpactTag } from 'views/screens/variant/Entity/index';
-import SummaryCard from 'views/screens/variant/Entity/ResumePanel/Summary';
 import { ArrangerEdge, ArrangerResultsTree } from 'graphql/models';
 
 import styles from './index.module.scss';
@@ -274,11 +273,11 @@ const columns = [
     title: () => intl.get('refSeq'),
     dataIndex: 'transcript',
     render: (transcript: { ids: string[]; isCanonical?: boolean }) => {
-      
+
       if (!transcript.ids || transcript.ids.length === 0) {
         return DISPLAY_WHEN_EMPTY_DATUM;
       }
-      
+
       return (
         transcript.ids.map(id => (
           <a
@@ -314,85 +313,82 @@ const ResumePanel = ({ data, className = '' }: OwnProps) => {
   const hasTables = tables.length > 0;
 
   return (
-    <StackLayout className={cx(styles.resumePanel, className)} vertical>
-      <Space direction="vertical" size={16}>
-        <SummaryCard loading={data.loading} variant={variantData} genes={genes} />
-        <Title level={4} className={styles.consequenceTitle}>
-          {intl.get('screen.variantDetails.summaryTab.consequencesTable.title')}
-        </Title>
-        <StackLayout className={styles.consequenceCards} vertical>
-          <Spin spinning={data.loading}>
-            {hasTables ? (
-              tables.map((tableData: TableGroup, index: number) => {
-                const symbol = tableData.symbol;
-                const omim = tableData.omim;
-                const biotype = tableData.biotype;
-                const orderedConsequences = sortConsequences(tableData.consequences);
+    <>
+      <Title level={4} className={styles.consequenceTitle}>
+        {intl.get('screen.variantDetails.summaryTab.consequencesTable.title')}
+      </Title>
+      <StackLayout className={styles.consequenceCards} vertical>
+        <Spin spinning={data.loading}>
+          {hasTables ? (
+            tables.map((tableData: TableGroup, index: number) => {
+              const symbol = tableData.symbol;
+              const omim = tableData.omim;
+              const biotype = tableData.biotype;
+              const orderedConsequences = sortConsequences(tableData.consequences);
 
-                return (
-                  <Card
-                    title={
-                      <Space size={12}>
-                        <Space size={4}>
-                          <span>
-                            <a
-                              href={`https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=${symbol}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {symbol}
-                            </a>
-                          </span>
-                        </Space>
-                        <Space size={4}>
-                          {omim && (
-                            <>
-                              <span>Omim</span>
-                              <span>
-                                <a
-                                  href={`https://omim.org/entry/${omim}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  {omim}
-                                </a>
-                              </span>
-                            </>
-                          )}
-                        </Space>
-                        <span className="bold value">{biotype}</span>
+              return (
+                <Card
+                  title={
+                    <Space size={12}>
+                      <Space size={4}>
+                        <span>
+                          <a
+                            href={`https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=${symbol}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {symbol}
+                          </a>
+                        </span>
                       </Space>
+                      <Space size={4}>
+                        {omim && (
+                          <>
+                            <span>Omim</span>
+                            <span>
+                              <a
+                                href={`https://omim.org/entry/${omim}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {omim}
+                              </a>
+                            </span>
+                          </>
+                        )}
+                      </Space>
+                      <span className="bold value">{biotype}</span>
+                    </Space>
+                  }
+                  className={styles.card}
+                  key={index}
+                >
+                  <ExpandableTable
+                    nOfElementsWhenCollapsed={1}
+                    buttonText={(showAll, hiddenNum) =>
+                      showAll
+                        ? intl.get('screen.variant.entity.table.hidetranscript')
+                        : `${intl.get(
+                            'screen.variant.entity.table.showtranscript',
+                          )} (${hiddenNum})`
                     }
-                    className={styles.card}
                     key={index}
-                  >
-                    <ExpandableTable
-                      nOfElementsWhenCollapsed={1}
-                      buttonText={(showAll, hiddenNum) =>
-                        showAll
-                          ? intl.get('screen.variant.entity.table.hidetranscript')
-                          : `${intl.get(
-                              'screen.variant.entity.table.showtranscript',
-                            )} (${hiddenNum})`
-                      }
-                      key={index}
-                      dataSource={makeRows(orderedConsequences)}
-                      columns={columns}
-                      pagination={false}
-                      size="small"
-                    />
-                  </Card>
-                );
-              })
-            ) : (
-              <Card>
-                <NoData />
-              </Card>
-            )}
-          </Spin>
-        </StackLayout>
-      </Space>
-    </StackLayout>
+                    dataSource={makeRows(orderedConsequences)}
+                    columns={columns}
+                    pagination={false}
+                    size="small"
+                  />
+                </Card>
+              );
+            })
+          ) : (
+            <Card>
+              <NoData />
+            </Card>
+          )}
+        </Spin>
+      </StackLayout>
+    </>
   );
 };
 

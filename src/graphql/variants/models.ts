@@ -121,6 +121,7 @@ export type VarsomeClassifications = {
     met_criteria: boolean;
     name: string;
     id: string;
+    user_explain: string;
 }
 type VarsomeVerdict = {
   benign_subscore: string;
@@ -134,9 +135,16 @@ type VarsomeAcmg = {
   classifications: ArrangerResultsTree<VarsomeClassifications>;
 }
 
+type Publication = {
+  id: string;
+}
+
 export type Varsome = {
   acmg: VarsomeAcmg;
   variant_id: string;
+  has_publication?: boolean;
+  publications: ArrangerResultsTree<Publication>
+
 }
 
 export type GeneEntity = {
