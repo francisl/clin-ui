@@ -1,7 +1,6 @@
 import React from 'react';
-import cx from 'classnames';
 import StackLayout from '@ferlab/ui/core/layout/StackLayout';
-import { Card, Typography, Space, Tooltip, Spin } from 'antd';
+import { Typography, Space, Tooltip, Spin } from 'antd';
 import intl from 'react-intl-universal';
 import capitalize from 'lodash/capitalize';
 import { DISPLAY_WHEN_EMPTY_DATUM } from 'views/screens/variant/constants';
@@ -17,6 +16,7 @@ import {
 } from 'graphql/variants/models';
 import { getVepImpactTag } from 'views/screens/variant/Entity/index';
 import { ArrangerEdge, ArrangerResultsTree } from 'graphql/models';
+import CollapsePanel from 'components/containers/collapse';
 
 import styles from './index.module.scss';
 
@@ -313,10 +313,7 @@ const ResumePanel = ({ data, className = '' }: OwnProps) => {
   const hasTables = tables.length > 0;
 
   return (
-    <>
-      <Title level={4} className={styles.consequenceTitle}>
-        {intl.get('screen.variantDetails.summaryTab.consequencesTable.title')}
-      </Title>
+    <CollapsePanel header={intl.get('screen.variantDetails.summaryTab.consequencesTitle')}>
       <StackLayout className={styles.consequenceCards} vertical>
         <Spin spinning={data.loading}>
           {hasTables ? (
@@ -327,43 +324,39 @@ const ResumePanel = ({ data, className = '' }: OwnProps) => {
               const orderedConsequences = sortConsequences(tableData.consequences);
 
               return (
-                <Card
-                  title={
-                    <Space size={12}>
-                      <Space size={4}>
-                        <span>
-                          <a
-                            href={`https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=${symbol}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {symbol}
-                          </a>
-                        </span>
-                      </Space>
-                      <Space size={4}>
-                        {omim && (
-                          <>
-                            <span>Omim</span>
-                            <span>
-                              <a
-                                href={`https://omim.org/entry/${omim}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {omim}
-                              </a>
-                            </span>
-                          </>
-                        )}
-                      </Space>
-                      <span className="bold value">{biotype}</span>
+                <>
+                  <Space size={12}>
+                    <Space size={4}>
+                      <span>
+                        <a
+                          href={`https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=${symbol}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {symbol}
+                        </a>
+                      </span>
                     </Space>
-                  }
-                  className={styles.card}
-                  key={index}
-                >
+                    <Space size={4}>
+                      {omim && (
+                        <>
+                          <span>Omim</span>
+                          <span>
+                            <a
+                              href={`https://omim.org/entry/${omim}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {omim}
+                            </a>
+                          </span>
+                        </>
+                      )}
+                    </Space>
+                    <span className="bold value">{biotype}</span>
+                  </Space>
                   <ExpandableTable
+                    bordered={true}
                     nOfElementsWhenCollapsed={1}
                     buttonText={(showAll, hiddenNum) =>
                       showAll
@@ -378,17 +371,15 @@ const ResumePanel = ({ data, className = '' }: OwnProps) => {
                     pagination={false}
                     size="small"
                   />
-                </Card>
+                </>
               );
             })
           ) : (
-            <Card>
-              <NoData />
-            </Card>
+            <NoData />
           )}
         </Spin>
       </StackLayout>
-    </>
+    </CollapsePanel>
   );
 };
 

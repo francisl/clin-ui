@@ -1,0 +1,18 @@
+.clinCollapsable {
+  :global {
+    .ant-collapse-header {
+      div {
+        align-items: center;
+        display: flex;
+        height: 30px;
+      }
+    }
+  }
+}
+
+.clinCollapsableHeader {
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  height: 30px;
+}

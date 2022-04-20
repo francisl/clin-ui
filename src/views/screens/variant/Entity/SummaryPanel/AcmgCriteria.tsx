@@ -1,10 +1,12 @@
 import React from 'react';
-import { Collapse, Spin, Table } from 'antd';
+import { Spin, Table, Typography } from 'antd';
 import intl from 'react-intl-universal';
 import {
     VariantEntity,
   } from 'graphql/variants/models';
-const { Panel } = Collapse;
+import CollapsePanel from 'components/containers/collapse';
+
+const { Title } = Typography;
 
 const columns = [
     {
@@ -42,26 +44,22 @@ type Props = {
     };
 }
 
+const Header = () => (
+    <Title level={4}>{intl.get('screen.variantDetails.summaryTab.acmgCriteriaTitle')}</Title>
+)
+
 const ACMGCriteria = ({data, isOpen = true}: Props) => (
-    <Collapse
-        bordered={false}
-        defaultActiveKey='1'
-    >
-        <Panel
-            header="Critère ACMG"
-            key={`1`}
-        >
-            <Spin spinning={data.loading}>
-                <Table
-                    bordered={true}
-                    dataSource={formatData(data.variantData) || []}
-                    columns={columns}
-                    pagination={false}
-                    size="small"
-                />
-            </Spin>
-        </Panel>
-    </Collapse>
+    <CollapsePanel header={<Header />}>
+        <Spin spinning={data.loading}>
+            <Table
+                bordered={true}
+                dataSource={formatData(data.variantData) || []}
+                columns={columns}
+                pagination={false}
+                size="small"
+            />
+        </Spin>
+    </CollapsePanel>
 );
 
 export default ACMGCriteria;
