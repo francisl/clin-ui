@@ -38,8 +38,8 @@ const PrescriptionSearch = (): React.ReactElement => {
     ],
   };
 
-  let searchResults = usePatients(patientQueryConfig);
-  let patients = usePatients(patientQueryConfig);
+  const searchResults = usePatients(patientQueryConfig);
+  const patients = usePatients(patientQueryConfig);
 
   useEffect(() => {
     const refetchData = async () => {
