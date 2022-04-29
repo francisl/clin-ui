@@ -8,6 +8,7 @@ import {
   useQuery,
 } from '@apollo/client';
 import { useEffect, useState } from 'react';
+import { RefetchCallback } from 'graphql/models';
 
 export type Hits<T> = {
   edges: {
@@ -19,7 +20,7 @@ export interface IBaseQueryResults<TData> {
   error: ApolloError | undefined;
   result: TData | undefined;
   loading: boolean;
-  refetch: (variables?: any | undefined) => Promise<ApolloQueryResult<TData>>;
+  refetch: RefetchCallback<TData>;
 }
 
 export const useLazyResultQuery = <TData = any, TVariables = OperationVariables>(
