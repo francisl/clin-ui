@@ -50,7 +50,7 @@ const PrescriptionSearch = (): React.ReactElement => {
     }
 
     if ( bridgeUpdates && searchResults.refetch && patients.refetch ) {
-      refetchData().then(() => setBbridgeUpdates(false));;
+      refetchData().then(() => setBbridgeUpdates(false));
     }
   }, [bridgeUpdates, setBbridgeUpdates, searchResults, patients])
 
