@@ -1,3 +1,4 @@
+import { ApolloQueryResult } from "@apollo/client";
 export interface ArrangerNodeData {
   id: string;
   cid?: string;
@@ -21,6 +22,7 @@ export interface GqlResults<DataT> {
   aggregations: Aggregations;
   loading: boolean;
   total: number;
+  refetch?: (variables?: any | undefined) => Promise<ApolloQueryResult<DataT>>;
 }
 
 // Recursive type that can represent nested query

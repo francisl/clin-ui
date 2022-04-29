@@ -1,5 +1,6 @@
 import {
   ApolloError,
+  ApolloQueryResult,
   DocumentNode,
   OperationVariables,
   QueryHookOptions,
@@ -18,16 +19,17 @@ export interface IBaseQueryResults<TData> {
   error: ApolloError | undefined;
   result: TData | undefined;
   loading: boolean;
+  refetch: (variables?: any | undefined) => Promise<ApolloQueryResult<TData>>;
 }
 
 export const useLazyResultQuery = <TData = any, TVariables = OperationVariables>(
   query: DocumentNode | TypedDocumentNode<TData, TVariables>,
   options?: QueryHookOptions<TData, TVariables>,
 ): IBaseQueryResults<TData> => {
-  const { data, error, loading, previousData } = useQuery<TData, TVariables>(query, options);
+  const { data, error, loading, previousData, refetch } = useQuery<TData, TVariables>(query, options);
 
   const result = data ? data : previousData;
-  return { error, loading, result };
+  return { error, loading, result, refetch };
 };
 
 /**

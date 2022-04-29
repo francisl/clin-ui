@@ -33,7 +33,7 @@ export const mappedFilters = (sqonFilters: ISyntheticSqon): ISyntheticSqon => {
 };
 
 export const usePatients = (variables: QueryVariable): GqlResults<PatientResult> => {
-  const { loading, result } = useLazyResultQuery<any>(PATIENTS_QUERY, {
+  const { loading, result, refetch } = useLazyResultQuery<any>(PATIENTS_QUERY, {
     variables: variables,
   });
   const patients = result?.Patients;
@@ -43,6 +43,7 @@ export const usePatients = (variables: QueryVariable): GqlResults<PatientResult>
     data: hydrateResults(patients?.hits?.edges || []),
     loading,
     total: patients?.hits.total,
+    refetch
   };
 };
 
